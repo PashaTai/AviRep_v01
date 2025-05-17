@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles and CSS Reset */
+:root {
+  --primary: #000000;
+  --secondary: #86868b;
+  --accent: #ff2d55;
+  --background: #fbfbfd;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sfprodisplay-regular-webfont.woff') format('woff');
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  color: var(--primary);
+}
+
+/* Typography Scale - Mobile First */
+h1, .h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2, .h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
+h3, .h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+h4, .h4 { font-size: clamp(1.25rem, 2vw, 2rem); }
+h5, .h5 { font-size: clamp(1.125rem, 1.5vw, 1.5rem); }
+h6, .h6 { font-size: clamp(1rem, 1.25vw, 1.25rem); }
+
+p { 
+  font-size: 1rem;
+  max-width: 75ch;
+}
+
+small { font-size: 0.875rem; }
+
+/* Container */
+.container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: 17px;
+  }
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 18px;
+  }
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+
+/* Components */
+.section-headline {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.section-subheadline {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--secondary);
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes starBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.star-bounce {
+  animation: starBounce 1s ease-in-out infinite;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.button-primary {
+  @apply px-8 py-4 rounded-full bg-[var(--accent)] text-white font-medium transition-all duration-300 hover:bg-opacity-90 hover:scale-105;
+  min-height: 48px;
+}
+
+.button-secondary {
+  @apply px-8 py-4 rounded-full border-2 border-black text-black font-medium transition-all duration-300 hover:bg-black hover:text-white;
+  min-height: 48px;
+}
+
+/* Form elements */
+.input-field {
+  @apply w-full px-6 py-4 rounded-lg bg-gray-100 border-2 border-transparent focus:border-[var(--accent)] focus:outline-none transition-all duration-300;
+  min-height: 48px;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
