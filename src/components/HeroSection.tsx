@@ -76,85 +76,87 @@ const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center pt-24 pb-16 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Company Logos */}
-        <div 
-          className="flex justify-center items-center gap-8 mb-12 flex-wrap"
-          style={{
-            animation: 'fadeIn 0.5s ease-out forwards',
-            animationDelay: '0.1s',
-            opacity: 0
-          }}
-        >
-          {companyLogos.map((logo, index) => (
-            <img
-              key={index}
-              src={logo.url}
-              alt={logo.name}
-              width={logo.width}
-              height={logo.width * 0.3}
-              loading={logo.loading}
-              style={{ 
-                width: logo.width,
-                height: 'auto',
-                animation: 'fadeIn 0.5s ease-out forwards',
-                animationDelay: `${index * 0.1}s`,
-                opacity: 0
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Animated Stars */}
-        <div className="flex justify-center gap-2 mb-12">
-          {[...Array(5)].map((_, index) => (
-            <Star
-              key={index}
-              className={`w-8 h-8 text-yellow-400 fill-yellow-400 transition-transform duration-300`}
-              style={{
-                transform: animatingStars.includes(index) ? 'translateY(-20px)' : 'translateY(0)',
-              }}
-            />
-          ))}
-        </div>
-
-        <h1 className="section-headline mb-8 fade-in">
-          Управление
-          <br />
-          репутацией в интернете
-        </h1>
-        
-        <p 
-          className="section-subheadline mb-12 max-w-3xl mx-auto"
-          style={{
-            opacity: isTransitioning ? 0 : 1,
-            transition: 'opacity 0.5s ease-in-out'
-          }}
-        >
-          {texts[textIndex]}
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center fade-in" style={{animationDelay: '0.4s'}}>
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-            className="button-primary"
-            aria-label="Начать сотрудничество"
+    <section className="min-h-screen flex flex-col relative">
+      <div className="flex-grow flex flex-col justify-center items-center pt-24 pb-16 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          {/* Company Logos */}
+          <div 
+            className="flex justify-center items-center gap-8 mb-12 flex-wrap"
+            style={{
+              animation: 'fadeIn 0.5s ease-out forwards',
+              animationDelay: '0.1s',
+              opacity: 0
+            }}
           >
-            Начать сейчас
-          </button>
-          <button 
-            onClick={() => document.getElementById('advantages')?.scrollIntoView({ behavior: 'smooth' })} 
-            className="button-secondary"
-            aria-label="Узнать о преимуществах"
+            {companyLogos.map((logo, index) => (
+              <img
+                key={index}
+                src={logo.url}
+                alt={logo.name}
+                width={logo.width}
+                height={logo.width * 0.3}
+                loading={logo.loading}
+                style={{ 
+                  width: logo.width,
+                  height: 'auto',
+                  animation: 'fadeIn 0.5s ease-out forwards',
+                  animationDelay: `${index * 0.1}s`,
+                  opacity: 0
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Animated Stars */}
+          <div className="flex justify-center gap-2 mb-12">
+            {[...Array(5)].map((_, index) => (
+              <Star
+                key={index}
+                className={`w-8 h-8 text-yellow-400 fill-yellow-400 transition-transform duration-300`}
+                style={{
+                  transform: animatingStars.includes(index) ? 'translateY(-20px)' : 'translateY(0)',
+                }}
+              />
+            ))}
+          </div>
+
+          <h1 className="section-headline mb-8 fade-in">
+            Управление
+            <br />
+            репутацией в интернете
+          </h1>
+          
+          <p 
+            className="section-subheadline mb-12 max-w-3xl mx-auto"
+            style={{
+              opacity: isTransitioning ? 0 : 1,
+              transition: 'opacity 0.5s ease-in-out'
+            }}
           >
-            Узнать больше
-          </button>
+            {texts[textIndex]}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center fade-in" style={{animationDelay: '0.4s'}}>
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+              className="button-primary"
+              aria-label="Начать сотрудничество"
+            >
+              Начать сейчас
+            </button>
+            <button 
+              onClick={() => document.getElementById('advantages')?.scrollIntoView({ behavior: 'smooth' })} 
+              className="button-secondary"
+              aria-label="Узнать о преимуществах"
+            >
+              Узнать больше
+            </button>
+          </div>
         </div>
       </div>
       
-      <div className="absolute bottom-10 animate-bounce">
-        <ChevronDown className="w-8 h-8 text-gray-400" aria-hidden="true" />
+      <div className="absolute left-1/2 bottom-8 -translate-x-1/2">
+        <ChevronDown className="w-8 h-8 text-gray-400 animate-bounce" aria-hidden="true" />
       </div>
     </section>
   );
