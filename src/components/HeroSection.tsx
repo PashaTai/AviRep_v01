@@ -76,8 +76,8 @@ const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen flex flex-col relative">
-      <div className="flex-grow flex flex-col justify-center items-center pt-24 pb-16 px-6">
+    <section className="min-h-screen flex flex-col justify-between pt-24 pb-8 px-6">
+      <div className="flex-grow flex items-center">
         <div className="max-w-6xl mx-auto text-center">
           {/* Company Logos */}
           <div 
@@ -155,7 +155,7 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute left-1/2 bottom-8 -translate-x-1/2">
+      <div className="flex justify-center mt-8">
         <ChevronDown className="w-8 h-8 text-gray-400 animate-bounce" aria-hidden="true" />
       </div>
     </section>
