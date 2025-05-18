@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Shield, ShieldCheck, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
+import logo from '../images/Logo.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -10,11 +11,7 @@ const Footer: React.FC = () => {
             {/* Column 1 - Logo and Description */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="relative">
-                  <Shield className="w-8 h-8 text-white absolute opacity-40" style={{ transform: 'scale(1.1)' }} />
-                  <ShieldCheck className="w-8 h-8 text-white relative" />
-                </div>
-                <span className="text-xl font-semibold">Avi Reputation</span>
+                <img src={logo} alt="Avi Reputation Logo" className="h-8 w-auto" />
               </div>
               <p className="text-[#86868b] mb-8">
                 Улучшаем вашу репутацию в интернете — честно, эффективно и с гарантией

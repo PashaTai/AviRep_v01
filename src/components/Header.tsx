@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield, ShieldCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from '../images/Logo.svg';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,11 +71,7 @@ const Header: React.FC = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
           >
-            <div className="relative">
-              <Shield className="w-8 h-8 text-black absolute opacity-40" style={{ transform: 'scale(1.1)' }} />
-              <ShieldCheck className="w-8 h-8 text-black relative" />
-            </div>
-            <span className="text-xl font-semibold tracking-tight">Avi Reputation</span>
+            <img src={logo} alt="Avi Reputation Logo" className="h-8 w-auto" />
           </div>
           
           <nav className={`hidden md:block transition-all duration-1000 ${
