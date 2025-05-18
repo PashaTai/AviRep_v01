@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.avireputation.ru/sitemap.xml
+
+# Allow all bots full access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Mail.Ru
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# Optimize crawling
+Crawl-delay: 1
