@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "create-favicon": "convert public/favicon-16x16.png public/favicon-32x32.png public/favicon.ico"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
