@@ -53,6 +53,7 @@ const Header: React.FC = () => {
           ? 'text-[#ff2d55] font-medium' 
           : 'text-primary hover:text-[#ff2d55]'
       }`}
+      aria-label={`Перейти к разделу ${text}`}
     >
       {text}
     </button>
@@ -76,7 +77,7 @@ const Header: React.FC = () => {
               alt="Avi Reputation Logo" 
               className="w-auto transition-all duration-300"
               style={{
-                height: isScrolled ? '3rem' : '4.5rem', // Using golden ratio (1.618)
+                height: isScrolled ? '3rem' : '4.5rem',
                 '@media (min-width: 640px)': {
                   height: isScrolled ? '3.5rem' : '5.5rem',
                 },
@@ -114,6 +115,7 @@ const Header: React.FC = () => {
                       ? 'bg-accent text-white hover:bg-opacity-90'
                       : 'bg-black text-white hover:bg-[#ff2d55]'
                   }`}
+                  aria-label="Связаться с нами"
                 >
                   Связаться
                 </button>
@@ -126,6 +128,8 @@ const Header: React.FC = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -155,6 +159,7 @@ const Header: React.FC = () => {
                     ? 'bg-accent text-white hover:bg-opacity-90'
                     : 'bg-black text-white hover:bg-[#ff2d55]'
                 }`}
+                aria-label="Связаться с нами"
               >
                 Связаться
               </button>
