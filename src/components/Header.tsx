@@ -61,7 +61,7 @@ const Header: React.FC = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'glass-effect py-4' : 'bg-transparent py-6'
+        isScrolled ? 'glass-effect py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-6">
@@ -71,7 +71,23 @@ const Header: React.FC = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
           >
-            <img src={logo} alt="Avi Reputation Logo" className="h-24 w-auto" />
+            <img 
+              src={logo} 
+              alt="Avi Reputation Logo" 
+              className="w-auto transition-all duration-300"
+              style={{
+                height: isScrolled ? '3rem' : '4.5rem', // Using golden ratio (1.618)
+                '@media (min-width: 640px)': {
+                  height: isScrolled ? '3.5rem' : '5.5rem',
+                },
+                '@media (min-width: 768px)': {
+                  height: isScrolled ? '4rem' : '6.5rem',
+                },
+                '@media (min-width: 1024px)': {
+                  height: isScrolled ? '4.5rem' : '7.5rem',
+                }
+              }}
+            />
           </div>
           
           <nav className={`hidden md:block transition-all duration-1000 ${
