@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Send } from 'lucide-react';
+import { useForm } from '@formspree/react';
 
 const ContactForm: React.FC = () => {
+  const [state, handleSubmit] = useForm("YOUR_FORM_ID"); // Replace with your Formspree form ID
   const [formData, setFormData] = useState({
     name: '',
     contacts: '',
@@ -10,16 +12,29 @@ const ContactForm: React.FC = () => {
     additionalInfo: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    // Handle form submission
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
+
+  if (state.succeeded) {
+    return (
+      <section id="contact" className="py-24 px-6 bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="section-headline mb-6">Спасибо за заявку!</h2>
+          <p className="section-subheadline mb-8">
+            Мы свяжемся с вами в ближайшее время.
+          </p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="button-primary inline-flex items-center justify-center gap-2"
+          >
+            Отправить еще одну заявку
+          </button>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-24 px-6 bg-white">
@@ -100,10 +115,20 @@ const ContactForm: React.FC = () => {
             ></textarea>
           </div>
 
-          <button type="submit" className="button-primary w-full flex items-center justify-center gap-2">
+          <button 
+            type="submit" 
+            disabled={state.submitting}
+            className="button-primary w-full flex items-center justify-center gap-2"
+          >
             <Send className="w-5 h-5" />
-            Отправить заявку
+            {state.submitting ? 'Отправка...' : 'Отправить заявку'}
           </button>
+
+          {state.errors && (
+            <div className="mt-4 p-4 bg-red-50 text-red-600 rounded-lg">
+              Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.
+            </div>
+          )}
         </form>
       </div>
     </section>
