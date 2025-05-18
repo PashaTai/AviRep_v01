@@ -3,22 +3,30 @@ import { Mail, Phone } from 'lucide-react';
 import logo from '../images/Logo.svg';
 
 const Footer: React.FC = () => {
-  const logoHeight = 64; // 4rem
-  const logoWidth = logoHeight * 3.5; // Maintaining aspect ratio
-
   return (
     <footer className="bg-[#1d1d1f] text-white py-16">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Column 1 - Logo and Description */}
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <img 
                   src={logo} 
                   alt="Avi Reputation Logo" 
-                  width={logoWidth}
-                  height={logoHeight}
                   className="w-auto brightness-0 invert transition-all duration-300"
+                  style={{
+                    height: '4rem', // Base size using golden ratio
+                    '@media (min-width: 640px)': {
+                      height: '5rem',
+                    },
+                    '@media (min-width: 768px)': {
+                      height: '6rem',
+                    },
+                    '@media (min-width: 1024px)': {
+                      height: '7rem',
+                    }
+                  }}
                 />
               </div>
               <p className="text-[#86868b] mb-8">
@@ -26,6 +34,7 @@ const Footer: React.FC = () => {
               </p>
             </div>
 
+            {/* Column 2 - Services */}
             <div>
               <h3 className="text-lg font-semibold mb-6">Услуги</h3>
               <ul className="space-y-4">
@@ -52,6 +61,7 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
+            {/* Column 3 - Contacts */}
             <div>
               <h3 className="text-lg font-semibold mb-6">Контакты</h3>
               <div className="space-y-4">
@@ -70,13 +80,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer" 
                     className="text-[#86868b] hover:text-white transition-colors"
                   >
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/2/21/VK.com-logo.svg" 
-                      alt="VK" 
-                      width={24} 
-                      height={24} 
-                      className="w-6 h-6" 
-                    />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/VK.com-logo.svg" alt="VK" className="w-6 h-6" />
                   </a>
                   <a 
                     href="https://t.me/vladimir_lvanovv" 
@@ -84,13 +88,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer" 
                     className="text-[#86868b] hover:text-white transition-colors"
                   >
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
-                      alt="Telegram" 
-                      width={24} 
-                      height={24} 
-                      className="w-6 h-6" 
-                    />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" className="w-6 h-6" />
                   </a>
                 </div>
               </div>
