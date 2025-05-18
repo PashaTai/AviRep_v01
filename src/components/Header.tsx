@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import logo from '../images/Logo.svg';
+import ThemeToggle from './ThemeToggle';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,7 +77,7 @@ const Header: React.FC = () => {
               alt="Avi Reputation Logo" 
               className="w-auto transition-all duration-300"
               style={{
-                height: isScrolled ? '3rem' : '4.5rem', // Using golden ratio (1.618)
+                height: isScrolled ? '3rem' : '4.5rem',
                 '@media (min-width: 640px)': {
                   height: isScrolled ? '3.5rem' : '5.5rem',
                 },
@@ -90,7 +91,7 @@ const Header: React.FC = () => {
             />
           </div>
           
-          <nav className={`hidden md:block transition-all duration-1000 ${
+          <nav className={`hidden md:flex items-center gap-8 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
           }`}>
             <ul className="flex items-center space-x-8">
@@ -107,12 +108,15 @@ const Header: React.FC = () => {
                 <NavLink id="testimonials" text="Отзывы" />
               </li>
               <li>
+                <ThemeToggle />
+              </li>
+              <li>
                 <button 
                   onClick={() => scrollToSection('contact')}
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
                     activeSection === 'contact' 
                       ? 'bg-accent text-white hover:bg-opacity-90'
-                      : 'bg-black text-white hover:bg-[#ff2d55]'
+                      : 'bg-primary text-background hover:bg-[#ff2d55]'
                   }`}
                 >
                   Связаться
@@ -121,14 +125,17 @@ const Header: React.FC = () => {
             </ul>
           </nav>
           
-          <button 
-            className={`md:hidden text-primary focus:outline-none transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-            }`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button 
+              className={`text-primary focus:outline-none transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+              }`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
       
@@ -153,7 +160,7 @@ const Header: React.FC = () => {
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 w-full ${
                   activeSection === 'contact' 
                     ? 'bg-accent text-white hover:bg-opacity-90'
-                    : 'bg-black text-white hover:bg-[#ff2d55]'
+                    : 'bg-primary text-background hover:bg-[#ff2d55]'
                 }`}
               >
                 Связаться
