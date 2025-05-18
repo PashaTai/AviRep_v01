@@ -10,7 +10,7 @@ export default {
         background: 'var(--background)',
       },
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji'],
+        sans: ['SF Pro Display', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'display': ['clamp(2.5rem, 5vw, 4.5rem)', '1.1'],
