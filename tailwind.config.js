@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#000000',
-        secondary: '#86868b',
-        accent: '#ff2d55',
-        background: '#fbfbfd',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
+        background: 'var(--background)',
       },
       fontFamily: {
         sans: ['SF Pro Display', 'system-ui', 'sans-serif'],

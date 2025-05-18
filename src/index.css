@@ -12,6 +12,14 @@
   box-sizing: border-box;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #ffffff;
+    --secondary: #a1a1a6;
+    --background: #1d1d1f;
+  }
+}
+
 *, *::before, *::after {
   box-sizing: inherit;
   margin: 0;
@@ -101,6 +109,7 @@ small { font-size: 0.875rem; }
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.015em;
+  color: var(--primary);
 }
 
 .section-subheadline {
@@ -146,7 +155,12 @@ small { font-size: 0.875rem; }
 }
 
 .glass-effect {
-  background: rgba(255, 255, 255, 0.7);
+  @media (prefers-color-scheme: light) {
+    background: rgba(255, 255, 255, 0.7);
+  }
+  @media (prefers-color-scheme: dark) {
+    background: rgba(29, 29, 31, 0.7);
+  }
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -164,14 +178,38 @@ small { font-size: 0.875rem; }
 }
 
 .button-secondary {
-  @apply px-8 py-4 rounded-full border-2 border-black text-black font-medium transition-all duration-300 hover:bg-black hover:text-white;
+  @apply px-8 py-4 rounded-full border-2 transition-all duration-300;
   min-height: 48px;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.button-secondary:hover {
+  @media (prefers-color-scheme: light) {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    background-color: #ffffff;
+    color: #000000;
+  }
 }
 
 /* Form elements */
 .input-field {
-  @apply w-full px-6 py-4 rounded-lg bg-gray-100 border-2 border-transparent focus:border-[var(--accent)] focus:outline-none transition-all duration-300;
+  @apply w-full px-6 py-4 rounded-lg border-2 border-transparent focus:border-[var(--accent)] focus:outline-none transition-all duration-300;
   min-height: 48px;
+  background-color: var(--background);
+  color: var(--primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .input-field {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .input-field:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
 }
 
 /* Images */
