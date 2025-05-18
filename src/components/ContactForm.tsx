@@ -3,7 +3,7 @@ import { Send } from 'lucide-react';
 import { useForm } from '@formspree/react';
 
 const ContactForm: React.FC = () => {
-  const [state, handleSubmit] = useForm("YOUR_FORM_ID"); // Replace with your Formspree form ID
+  const [state, handleSubmit] = useForm("xzzronqa");
   const [formData, setFormData] = useState({
     name: '',
     contacts: '',
@@ -118,9 +118,11 @@ const ContactForm: React.FC = () => {
           <button 
             type="submit" 
             disabled={state.submitting}
-            className="button-primary w-full flex items-center justify-center gap-2"
+            className={`button-primary w-full flex items-center justify-center gap-2 ${
+              state.submitting ? 'opacity-75 cursor-not-allowed' : ''
+            }`}
           >
-            <Send className="w-5 h-5" />
+            <Send className={`w-5 h-5 ${state.submitting ? 'animate-pulse' : ''}`} />
             {state.submitting ? 'Отправка...' : 'Отправить заявку'}
           </button>
 
