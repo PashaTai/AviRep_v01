@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             {/* Column 1 - Logo and Description */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <img src={logo} alt="Avi Reputation Logo" className="h-8 w-auto" />
+                <img src={logo} alt="Avi Reputation Logo" className="h-24 w-auto brightness-0 invert" />
               </div>
               <p className="text-[#86868b] mb-8">
                 Улучшаем вашу репутацию в интернете — честно, эффективно и с гарантией
