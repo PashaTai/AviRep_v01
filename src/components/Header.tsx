@@ -12,15 +12,12 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
 
-      // Get all sections
       const sections = ['advantages', 'prices', 'guarantees', 'testimonials', 'contact'];
       
-      // Find the current section
       for (const sectionId of sections) {
         const section = document.getElementById(sectionId);
         if (section) {
           const rect = section.getBoundingClientRect();
-          // Add some offset to account for the header height
           if (rect.top <= 100 && rect.bottom >= 100) {
             setActiveSection(sectionId);
             break;
@@ -30,10 +27,7 @@ const Header: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Trigger fade-in animation after component mount
     setTimeout(() => setIsVisible(true), 100);
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -59,6 +53,9 @@ const Header: React.FC = () => {
     </button>
   );
 
+  const logoHeight = isScrolled ? 48 : 72;
+  const logoWidth = logoHeight * 3.5; // Maintaining aspect ratio
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -75,19 +72,9 @@ const Header: React.FC = () => {
             <img 
               src={logo} 
               alt="Avi Reputation Logo" 
+              width={logoWidth}
+              height={logoHeight}
               className="w-auto transition-all duration-300"
-              style={{
-                height: isScrolled ? '3rem' : '4.5rem',
-                '@media (min-width: 640px)': {
-                  height: isScrolled ? '3.5rem' : '5.5rem',
-                },
-                '@media (min-width: 768px)': {
-                  height: isScrolled ? '4rem' : '6.5rem',
-                },
-                '@media (min-width: 1024px)': {
-                  height: isScrolled ? '4.5rem' : '7.5rem',
-                }
-              }}
             />
           </div>
           
@@ -95,18 +82,10 @@ const Header: React.FC = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
           }`}>
             <ul className="flex items-center space-x-8">
-              <li>
-                <NavLink id="advantages" text="Преимущества" />
-              </li>
-              <li>
-                <NavLink id="prices" text="Цены" />
-              </li>
-              <li>
-                <NavLink id="guarantees" text="Гарантии" />
-              </li>
-              <li>
-                <NavLink id="testimonials" text="Отзывы" />
-              </li>
+              <li><NavLink id="advantages" text="Преимущества" /></li>
+              <li><NavLink id="prices" text="Цены" /></li>
+              <li><NavLink id="guarantees" text="Гарантии" /></li>
+              <li><NavLink id="testimonials" text="Отзывы" /></li>
               <li>
                 <button 
                   onClick={() => scrollToSection('contact')}
@@ -139,18 +118,10 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden glass-effect">
           <ul className="py-4 px-6 space-y-4">
-            <li>
-              <NavLink id="advantages" text="Преимущества" />
-            </li>
-            <li>
-              <NavLink id="prices" text="Цены" />
-            </li>
-            <li>
-              <NavLink id="guarantees" text="Гарантии" />
-            </li>
-            <li>
-              <NavLink id="testimonials" text="Отзывы" />
-            </li>
+            <li><NavLink id="advantages" text="Преимущества" /></li>
+            <li><NavLink id="prices" text="Цены" /></li>
+            <li><NavLink id="guarantees" text="Гарантии" /></li>
+            <li><NavLink id="testimonials" text="Отзывы" /></li>
             <li>
               <button 
                 onClick={() => scrollToSection('contact')}
