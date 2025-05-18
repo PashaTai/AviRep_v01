@@ -73,8 +73,8 @@ const PriceListSection: React.FC = () => {
               <div className="space-y-4 flex-grow">
                 {category.services.map((service, serviceIndex) => (
                   <div key={serviceIndex} className="flex justify-between items-center py-3 border-b border-gray-200 last:border-0">
-                    <span className="text-gray-800">{service.name}</span>
-                    <span className="font-medium text-accent">{service.price}</span>
+                    <span className="text-gray-800 pr-3">{service.name}</span>
+                    <span className="font-medium text-accent whitespace-nowrap">{service.price}</span>
                   </div>
                 ))}
               </div>
