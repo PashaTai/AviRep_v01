@@ -7,7 +7,7 @@ const SeoPackagesSection: React.FC = () => {
   const packages = [
     {
       name: 'Базовый',
-      description: 'Идеально для новых сайтов и малого бизнеса, которые хотят заложить прочный SEO-фундамент.',
+      description: 'Идеально для новых сайтов и малого бизнеса, которые хотят начать SEO-продвижение.',
       tokens: 'SEO-оптимизация + контент',
       packagePrice: '109 000',
       separatePrice: '123 000',
@@ -41,7 +41,7 @@ const SeoPackagesSection: React.FC = () => {
     {
       name: 'Максимальный',
       description: 'Для амбициозных компаний, нацеленных на лидерство в высококонкурентных нишах.',
-      tokens: 'Полное доминирование + SERM',
+      tokens: 'SEO-продвижение + SERM',
       packagePrice: '479 000',
       separatePrice: '518 000',
       services: [
@@ -176,7 +176,7 @@ const SeoPackagesSection: React.FC = () => {
             
             <div className="mb-8">
               <h3 className="text-2xl font-semibold mb-2">Индивидуальный</h3>
-              <div className="text-accent font-medium mb-2">Персональное решение</div>
+              <div className="text-accent font-medium mb-2">Персональное решение для компаний и агентств</div>
               <p className="text-secondary text-sm">
                 Создадим уникальный пакет услуг под ваши конкретные задачи и бюджет.
               </p>

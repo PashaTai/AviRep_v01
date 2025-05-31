@@ -52,7 +52,7 @@ const PriceListSection: React.FC = () => {
   return (
     <section id="prices" className="py-24 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
-        <h2 className="section-headline text-center mb-20">Прайс-лист</h2>
+        <h2 className="section-headline text-center mb-20"> ORM Прайс-лист</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {categories.map((category, index) => (
