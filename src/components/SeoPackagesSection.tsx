@@ -68,24 +68,26 @@ const SeoPackagesSection: React.FC = () => {
           Выберите подходящий пакет услуг для вашего проекта
         </p>
 
-        <div className="flex justify-center items-center gap-6 mb-16">
-          <span className={`text-lg ${!isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
-            Отдельные услуги
-          </span>
-          <div className="checkbox_item">
-            <label className="checkbox_wrap">
-              <input 
-                type="checkbox" 
-                className="checkbox_inp"
-                checked={isPackageMode}
-                onChange={() => setIsPackageMode(!isPackageMode)}
-              />
-              <span className="checkbox_mark"></span>
-            </label>
+        <div className="flex justify-center items-center gap-4 md:gap-6 mb-16">
+          <div className="flex items-center justify-center gap-4 md:gap-6">
+            <span className={`text-lg whitespace-nowrap ${!isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
+              Отдельные услуги
+            </span>
+            <div className="checkbox_item flex items-center">
+              <label className="checkbox_wrap">
+                <input 
+                  type="checkbox" 
+                  className="checkbox_inp"
+                  checked={isPackageMode}
+                  onChange={() => setIsPackageMode(!isPackageMode)}
+                />
+                <span className="checkbox_mark"></span>
+              </label>
+            </div>
+            <span className={`text-lg whitespace-nowrap ${isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
+              Пакеты со скидкой
+            </span>
           </div>
-          <span className={`text-lg ${isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
-            Пакеты со скидкой
-          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
