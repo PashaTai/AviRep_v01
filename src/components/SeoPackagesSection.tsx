@@ -72,17 +72,17 @@ const SeoPackagesSection: React.FC = () => {
           <span className={`text-lg ${!isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
             Отдельные услуги
           </span>
-          <button
-            onClick={() => setIsPackageMode(!isPackageMode)}
-            className="relative w-16 h-8 rounded-full transition-colors duration-300 focus:outline-none"
-            style={{ backgroundColor: isPackageMode ? 'var(--accent)' : '#333' }}
-            aria-label={isPackageMode ? 'Переключить на отдельные услуги' : 'Переключить на пакеты со скидкой'}
-          >
-            <div
-              className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition-transform duration-300"
-              style={{ transform: isPackageMode ? 'translateX(32px)' : 'translateX(0)' }}
-            />
-          </button>
+          <div className="checkbox_item">
+            <label className="checkbox_wrap">
+              <input 
+                type="checkbox" 
+                className="checkbox_inp"
+                checked={isPackageMode}
+                onChange={() => setIsPackageMode(!isPackageMode)}
+              />
+              <span className="checkbox_mark"></span>
+            </label>
+          </div>
           <span className={`text-lg ${isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
             Пакеты со скидкой
           </span>
