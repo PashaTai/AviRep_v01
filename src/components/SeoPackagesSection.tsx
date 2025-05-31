@@ -68,22 +68,25 @@ const SeoPackagesSection: React.FC = () => {
           Выберите подходящий пакет услуг для вашего проекта
         </p>
 
-        <div className="flex justify-center items-center gap-6 mb-16">
-          <span className={`text-lg ${!isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
+        {/* Improved toggle switch */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-16">
+          <span className={`text-lg transition-colors duration-300 ${!isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
             Отдельные услуги
           </span>
-          <button
-            onClick={() => setIsPackageMode(!isPackageMode)}
-            className="relative w-16 h-8 rounded-full transition-colors duration-300 focus:outline-none"
-            style={{ backgroundColor: isPackageMode ? 'var(--accent)' : '#333' }}
-            aria-label={isPackageMode ? 'Переключить на отдельные услуги' : 'Переключить на пакеты со скидкой'}
-          >
-            <div
-              className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition-transform duration-300"
-              style={{ transform: isPackageMode ? 'translateX(32px)' : 'translateX(0)' }}
-            />
-          </button>
-          <span className={`text-lg ${isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
+          <div className="relative w-16 h-8 flex items-center">
+            <button
+              onClick={() => setIsPackageMode(!isPackageMode)}
+              className="w-full h-full rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              style={{ backgroundColor: isPackageMode ? 'var(--accent)' : '#333' }}
+              aria-label={isPackageMode ? 'Переключить на отдельные услуги' : 'Переключить на пакеты со скидкой'}
+            >
+              <div
+                className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300 transform"
+                style={{ transform: isPackageMode ? 'translateX(calc(100% - 0.25rem))' : 'translateX(0)' }}
+              />
+            </button>
+          </div>
+          <span className={`text-lg transition-colors duration-300 ${isPackageMode ? 'text-accent font-medium' : 'text-secondary'}`}>
             Пакеты со скидкой
           </span>
         </div>
@@ -98,8 +101,7 @@ const SeoPackagesSection: React.FC = () => {
               style={{
                 animation: 'fadeIn 0.5s ease-out forwards',
                 animationDelay: `${index * 0.1}s`,
-                opacity: 0,
-                height: '100%'
+                opacity: 0
               }}
             >
               {pkg.popular && (
@@ -110,13 +112,13 @@ const SeoPackagesSection: React.FC = () => {
 
               <div className="text-accent mb-6">{pkg.icon}</div>
               
-              <div className="mb-8">
+              <div className="mb-6">
                 <h3 className="text-2xl font-semibold mb-2">{pkg.name}</h3>
                 <div className="text-accent font-medium mb-2">{pkg.tokens}</div>
                 <p className="text-secondary text-sm">{pkg.description}</p>
               </div>
 
-              <div className="mb-8">
+              <div className="mb-6">
                 {isPackageMode && (
                   <div className="text-secondary line-through text-lg mb-1">
                     {pkg.separatePrice} ₽
@@ -128,14 +130,14 @@ const SeoPackagesSection: React.FC = () => {
                 <div className="text-secondary text-sm">Единоразово</div>
               </div>
 
-              <div className="flex-grow">
+              <div className="flex-grow mb-6">
                 <ul className="space-y-4">
                   {pkg.services.map((service, serviceIndex) => (
                     <li key={serviceIndex} className="flex items-start gap-3">
                       {service.included ? (
-                        <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-gray-300 flex-shrink-0" />
+                        <XCircle className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
                       )}
                       <span className={service.included ? 'text-primary' : 'text-secondary'}>
                         {service.name}
@@ -145,18 +147,16 @@ const SeoPackagesSection: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="mt-8">
-                <button
-                  onClick={scrollToContact}
-                  className={`w-full ${
-                    pkg.popular
-                      ? 'button-primary'
-                      : 'button-secondary'
-                  }`}
-                >
-                  {isPackageMode ? 'Заказать пакет' : 'Заказать услуги'}
-                </button>
-              </div>
+              <button
+                onClick={scrollToContact}
+                className={`w-full mt-auto ${
+                  pkg.popular
+                    ? 'button-primary'
+                    : 'button-secondary'
+                }`}
+              >
+                {isPackageMode ? 'Заказать пакет' : 'Заказать услуги'}
+              </button>
             </div>
           ))}
 
@@ -166,15 +166,14 @@ const SeoPackagesSection: React.FC = () => {
             style={{
               animation: 'fadeIn 0.5s ease-out forwards',
               animationDelay: '0.4s',
-              opacity: 0,
-              height: '100%'
+              opacity: 0
             }}
           >
             <div className="text-accent mb-6">
               <Sparkles className="w-8 h-8" />
             </div>
             
-            <div className="mb-8">
+            <div className="mb-6">
               <h3 className="text-2xl font-semibold mb-2">Индивидуальный</h3>
               <div className="text-accent font-medium mb-2">Персональное решение для компаний и агентств</div>
               <p className="text-secondary text-sm">
@@ -182,7 +181,7 @@ const SeoPackagesSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex-grow">
+            <div className="flex-grow mb-6">
               <div className="text-center">
                 <div className="text-2xl font-bold mb-4">
                   Не подходит ни один из готовых вариантов?
@@ -193,11 +192,9 @@ const SeoPackagesSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-8">
-              <button onClick={scrollToContact} className="button-primary w-full">
-                Обсудить проект
-              </button>
-            </div>
+            <button onClick={scrollToContact} className="button-primary w-full mt-auto">
+              Обсудить проект
+            </button>
           </div>
         </div>
       </div>
