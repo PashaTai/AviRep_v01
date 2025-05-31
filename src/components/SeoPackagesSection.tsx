@@ -63,7 +63,7 @@ const SeoPackagesSection: React.FC = () => {
   return (
     <section className="py-24 px-6 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="section-headline text-center mb-6">SEO пакеты</h2>
+        <h2 className="section-headline text-center mb-6">SEO Продвижение</h2>
         <p className="section-subheadline text-center mb-16">
           Выберите подходящий пакет услуг для вашего проекта
         </p>
@@ -92,13 +92,14 @@ const SeoPackagesSection: React.FC = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 hover-scale relative ${
+              className={`bg-white rounded-2xl p-8 hover-scale relative flex flex-col ${
                 pkg.popular ? 'border-2 border-accent' : ''
               }`}
               style={{
                 animation: 'fadeIn 0.5s ease-out forwards',
                 animationDelay: `${index * 0.1}s`,
-                opacity: 0
+                opacity: 0,
+                height: '100%'
               }}
             >
               {pkg.popular && (
@@ -108,78 +109,95 @@ const SeoPackagesSection: React.FC = () => {
               )}
 
               <div className="text-accent mb-6">{pkg.icon}</div>
-              <h3 className="text-2xl font-semibold mb-2">{pkg.name}</h3>
-              <div className="text-accent font-medium mb-2">{pkg.tokens}</div>
-              <p className="text-secondary text-sm mb-6">{pkg.description}</p>
-
-              {isPackageMode && (
-                <div className="text-secondary line-through text-lg mb-1">
-                  {pkg.separatePrice} ₽
-                </div>
-              )}
-              <div className="text-4xl font-bold mb-2">
-                {isPackageMode ? pkg.packagePrice : pkg.separatePrice} ₽
+              
+              <div className="mb-8">
+                <h3 className="text-2xl font-semibold mb-2">{pkg.name}</h3>
+                <div className="text-accent font-medium mb-2">{pkg.tokens}</div>
+                <p className="text-secondary text-sm">{pkg.description}</p>
               </div>
-              <div className="text-secondary text-sm mb-8">Единоразово</div>
 
-              <ul className="space-y-4 mb-8">
-                {pkg.services.map((service, serviceIndex) => (
-                  <li key={serviceIndex} className="flex items-start gap-3">
-                    {service.included ? (
-                      <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    ) : (
-                      <XCircle className="w-5 h-5 text-gray-300 flex-shrink-0" />
-                    )}
-                    <span className={service.included ? 'text-primary' : 'text-secondary'}>
-                      {service.name}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mb-8">
+                {isPackageMode && (
+                  <div className="text-secondary line-through text-lg mb-1">
+                    {pkg.separatePrice} ₽
+                  </div>
+                )}
+                <div className="text-4xl font-bold mb-2">
+                  {isPackageMode ? pkg.packagePrice : pkg.separatePrice} ₽
+                </div>
+                <div className="text-secondary text-sm">Единоразово</div>
+              </div>
 
-              <button
-                onClick={scrollToContact}
-                className={`w-full ${
-                  pkg.popular
-                    ? 'button-primary'
-                    : 'button-secondary'
-                }`}
-              >
-                {isPackageMode ? 'Заказать пакет' : 'Заказать услуги'}
-              </button>
+              <div className="flex-grow">
+                <ul className="space-y-4">
+                  {pkg.services.map((service, serviceIndex) => (
+                    <li key={serviceIndex} className="flex items-start gap-3">
+                      {service.included ? (
+                        <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      ) : (
+                        <XCircle className="w-5 h-5 text-gray-300 flex-shrink-0" />
+                      )}
+                      <span className={service.included ? 'text-primary' : 'text-secondary'}>
+                        {service.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-8">
+                <button
+                  onClick={scrollToContact}
+                  className={`w-full ${
+                    pkg.popular
+                      ? 'button-primary'
+                      : 'button-secondary'
+                  }`}
+                >
+                  {isPackageMode ? 'Заказать пакет' : 'Заказать услуги'}
+                </button>
+              </div>
             </div>
           ))}
 
           {/* Custom Package Card */}
           <div
-            className="bg-white rounded-2xl p-8 hover-scale"
+            className="bg-white rounded-2xl p-8 hover-scale flex flex-col"
             style={{
               animation: 'fadeIn 0.5s ease-out forwards',
               animationDelay: '0.4s',
-              opacity: 0
+              opacity: 0,
+              height: '100%'
             }}
           >
             <div className="text-accent mb-6">
               <Sparkles className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-semibold mb-2">Индивидуальный</h3>
-            <div className="text-accent font-medium mb-2">Персональное решение</div>
-            <p className="text-secondary text-sm mb-12">
-              Создадим уникальный пакет услуг под ваши конкретные задачи и бюджет.
-            </p>
-
-            <div className="text-center mb-12">
-              <div className="text-2xl font-bold mb-4">
-                Не подходит ни один из готовых вариантов?
-              </div>
-              <p className="text-secondary">
-                Мы внимательно изучим ваш проект, проанализируем конкурентов и составим персональное предложение с оптимальным набором услуг.
+            
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-2">Индивидуальный</h3>
+              <div className="text-accent font-medium mb-2">Персональное решение</div>
+              <p className="text-secondary text-sm">
+                Создадим уникальный пакет услуг под ваши конкретные задачи и бюджет.
               </p>
             </div>
 
-            <button onClick={scrollToContact} className="button-primary w-full">
-              Обсудить проект
-            </button>
+            <div className="flex-grow">
+              <div className="text-center">
+                <div className="text-2xl font-bold mb-4">
+                  Не подходит ни один из готовых вариантов?
+                </div>
+                <p className="text-secondary">
+                  Мы внимательно изучим ваш проект, проанализируем конкурентов и составим персональное предложение с оптимальным набором услуг.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <button onClick={scrollToContact} className="button-primary w-full">
+                Обсудить проект
+              </button>
+            </div>
           </div>
         </div>
       </div>
