@@ -3,6 +3,7 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AdvantagesSection from './components/AdvantagesSection';
 import PriceListSection from './components/PriceListSection';
+import SeoPackagesSection from './components/SeoPackagesSection';
 import InternationalSection from './components/InternationalSection';
 import ProcessSection from './components/ProcessSection';
 import GuaranteesSection from './components/GuaranteesSection';
@@ -23,6 +24,7 @@ function App() {
         <HeroSection />
         <AdvantagesSection />
         <PriceListSection />
+        <SeoPackagesSection />
         <InternationalSection />
         <ProcessSection />
         <GuaranteesSection />
@@ -34,5 +36,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
