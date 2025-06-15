@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
 
 interface BlogPost {
@@ -55,6 +55,33 @@ const BlogSection: React.FC = () => {
   const navigateToHome = () => {
     window.location.href = '/#contact';
   };
+
+  useEffect(() => {
+  // Update page title
+  document.title = 'Блог | Avi Reputation';
+  
+  // Update meta description
+  let metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute('content', 'Экспертные статьи о управлении репутацией, SEO и цифровом маркетинге от специалистов Avi Reputation');
+  } else {
+    metaDescription = document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    metaDescription.setAttribute('content', 'Экспертные статьи о управлении репутацией, SEO и цифровом маркетинге от специалистов Avi Reputation');
+    document.head.appendChild(metaDescription);
+  }
+  
+  // Add canonical URL
+  let canonicalLink = document.querySelector('link[rel="canonical"]');
+  if (canonicalLink) {
+    canonicalLink.setAttribute('href', 'https://www.avireputation.ru/blog');
+  } else {
+    canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    canonicalLink.setAttribute('href', 'https://www.avireputation.ru/blog');
+    document.head.appendChild(canonicalLink);
+  }
+}, []);
 
   return (
     <section className="py-24 px-6 bg-white">
