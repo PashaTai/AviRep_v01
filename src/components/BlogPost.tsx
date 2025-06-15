@@ -45,9 +45,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
 
 Мы не предлагаем универсальные решения. Каждая стратегия разрабатывается с учётом ваших особенностей и задач. Наш опыт и уникальные технологии позволяют эффективно управлять цифровым профилем как в России так и за рубежом.`,
       slug: 'pochemu-vazhno-kontrolirovat-informatsiyu-o-vas-v-internete',
-      publishDate: '2024-12-20',
+      publishDate: '2025-06-15',
       readTime: '5 мин',
-      author: 'Avi Reputation',
+      author: 'Владимир Иванов',
       tags: ['Управление репутацией', 'Цифровой профиль', 'Комплаенс'],
       metaTitle: 'Почему важно контролировать информацию о вас в интернете | Avi Reputation',
       metaDescription: 'Узнайте, как цифровой профиль влияет на бизнес и личные возможности. Советы по управлению репутацией в интернете от экспертов Avi Reputation.'
@@ -79,7 +79,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
         "headline": post.title,
         "description": post.metaDescription,
         "author": {
-          "@type": "Organization",
+          "@type": "Person",
           "name": post.author
         },
         "publisher": {
@@ -143,8 +143,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
     });
   };
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  const navigateToHome = () => {
+    window.location.href = '/#contact';
   };
 
   const shareArticle = () => {
@@ -247,7 +247,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
-                onClick={scrollToContact}
+                onClick={navigateToHome}
                 className="button-primary"
               >
                 Получить консультацию

@@ -43,17 +43,17 @@ const BlogSection: React.FC = () => {
 
 Мы не предлагаем универсальные решения. Каждая стратегия разрабатывается с учётом ваших особенностей и задач. Наш опыт и уникальные технологии позволяют эффективно управлять цифровым профилем как в России так и за рубежом.`,
       slug: 'pochemu-vazhno-kontrolirovat-informatsiyu-o-vas-v-internete',
-      publishDate: '2024-12-20',
+      publishDate: '2025-06-15',
       readTime: '5 мин',
-      author: 'Avi Reputation',
+      author: 'Владимир Иванов',
       tags: ['Управление репутацией', 'Цифровой профиль', 'Комплаенс'],
       metaTitle: 'Почему важно контролировать информацию о вас в интернете | Avi Reputation',
       metaDescription: 'Узнайте, как цифровой профиль влияет на бизнес и личные возможности. Советы по управлению репутацией в интернете от экспертов Avi Reputation.'
     }
   ];
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  const navigateToHome = () => {
+    window.location.href = '/#contact';
   };
 
   return (
@@ -160,7 +160,7 @@ const BlogSection: React.FC = () => {
                   SEO-продвижения и цифрового маркетинга.
                 </p>
                 <button 
-                  onClick={scrollToContact}
+                  onClick={navigateToHome}
                   className="button-primary w-full"
                 >
                   Получить консультацию
@@ -188,12 +188,14 @@ const BlogSection: React.FC = () => {
                 <p className="text-gray-300 mb-6">
                   Получите персональную консультацию по управлению репутацией
                 </p>
-                <button 
-                  onClick={scrollToContact}
-                  className="bg-accent text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all w-full"
+                <a 
+                  href="https://t.me/vladimir_lvanovv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-accent text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all w-full inline-block text-center"
                 >
                   Связаться с нами
-                </button>
+                </a>
               </div>
             </div>
           </div>

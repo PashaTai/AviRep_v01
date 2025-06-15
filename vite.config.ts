@@ -23,5 +23,12 @@ export default defineConfig({
         drop_debugger: true
       }
     }
+  },
+  // Add fallback for client-side routing
+  server: {
+    historyApiFallback: true
+  },
+  preview: {
+    historyApiFallback: true
   }
 });
