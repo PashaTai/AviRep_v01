@@ -1,10 +1,23 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
+import Router from './components/Router';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 import './index.css';
+
+// Get current path
+const currentPath = window.location.pathname;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <Router path={currentPath} />
+      </main>
+      <Footer />
+      <BackToTop />
+    </div>
   </StrictMode>
 );
