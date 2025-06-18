@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Calendar, Clock, ArrowLeft, User, Share2, Tag } from 'lucide-react';
 import blogHeroImage from '../images/blog-hero.png';
+import digitalReputationImage from '../images/digital-reputation-team.png';
 
 interface BlogPostProps {
   slug: string;
@@ -142,20 +143,46 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
   }
 
   const formatContent = (content: string) => {
-    return content.split('\n\n').map((paragraph, index) => {
-      if (paragraph.startsWith('## ')) {
-        return (
+    const sections = content.split('\n\n');
+    const formattedSections: JSX.Element[] = [];
+    
+    sections.forEach((section, index) => {
+      if (section.startsWith('## ')) {
+        formattedSections.push(
           <h2 key={index} className="text-3xl font-semibold mb-6 mt-12 first:mt-0">
-            {paragraph.replace('## ', '')}
+            {section.replace('## ', '')}
           </h2>
         );
+        
+        // Add image after "Как мы помогаем" section
+        if (section.includes('Как мы помогаем')) {
+          formattedSections.push(
+            <div key={`image-${index}`} className="my-12 -mx-6 md:mx-0">
+              <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden md:rounded-2xl">
+                <img
+                  src={digitalReputationImage}
+                  alt="Цифровая репутация - это необходимость при построении бренда"
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              </div>
+              <p className="text-center text-secondary mt-4 italic text-lg">
+                Цифровая репутация — это необходимость при построении бренда
+              </p>
+            </div>
+          );
+        }
+      } else {
+        formattedSections.push(
+          <p key={index} className="text-lg leading-relaxed mb-6">
+            {section}
+          </p>
+        );
       }
-      return (
-        <p key={index} className="text-lg leading-relaxed mb-6">
-          {paragraph}
-        </p>
-      );
     });
+    
+    return formattedSections;
   };
 
   const navigateToHome = () => {
