@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
+import blogHeroImage from '../images/blog-hero.png';
 
 interface BlogPost {
   id: string;
@@ -13,6 +14,7 @@ interface BlogPost {
   tags: string[];
   metaTitle: string;
   metaDescription: string;
+  heroImage?: string;
 }
 
 const BlogSection: React.FC = () => {
@@ -48,7 +50,8 @@ const BlogSection: React.FC = () => {
       author: 'Владимир Иванов',
       tags: ['Управление репутацией', 'Цифровой профиль', 'Комплаенс'],
       metaTitle: 'Почему важно контролировать информацию о вас в интернете | Avi Reputation',
-      metaDescription: 'Узнайте, как цифровой профиль влияет на бизнес и личные возможности. Советы по управлению репутацией в интернете от экспертов Avi Reputation.'
+      metaDescription: 'Узнайте, как цифровой профиль влияет на бизнес и личные возможности. Советы по управлению репутацией в интернете от экспертов Avi Reputation.',
+      heroImage: blogHeroImage
     }
   ];
 
@@ -113,63 +116,78 @@ const BlogSection: React.FC = () => {
               {blogPosts.map((post, index) => (
                 <article 
                   key={post.id}
-                  className="bg-gray-50 rounded-2xl p-8 hover-scale"
+                  className="bg-gray-50 rounded-2xl overflow-hidden hover-scale"
                   style={{
                     animation: 'fadeIn 0.5s ease-out forwards',
                     animationDelay: `${index * 0.1}s`,
                     opacity: 0
                   }}
                 >
-                  <div className="flex items-center gap-4 text-sm text-secondary mb-4">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <time dateTime={post.publishDate}>
-                        {new Date(post.publishDate).toLocaleDateString('ru-RU', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </time>
+                  {/* Hero Image */}
+                  {post.heroImage && (
+                    <div className="relative w-full h-48 md:h-64 overflow-hidden">
+                      <img
+                        src={post.heroImage}
+                        alt={post.title}
+                        className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" />
-                      <span>{post.readTime}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <User className="w-4 h-4" />
-                      <span>{post.author}</span>
-                    </div>
-                  </div>
+                  )}
 
-                  <h2 className="text-2xl font-semibold mb-4 hover:text-accent transition-colors">
-                    <a href={`/blog/${post.slug}`}>
-                      {post.title}
-                    </a>
-                  </h2>
-
-                  <p className="text-secondary mb-6 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-wrap gap-2">
-                      {post.tags.map((tag, tagIndex) => (
-                        <span 
-                          key={tagIndex}
-                          className="px-3 py-1 bg-white rounded-full text-sm text-secondary"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                  <div className="p-8">
+                    <div className="flex items-center gap-4 text-sm text-secondary mb-4">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4" />
+                        <time dateTime={post.publishDate}>
+                          {new Date(post.publishDate).toLocaleDateString('ru-RU', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                          })}
+                        </time>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        <span>{post.readTime}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <User className="w-4 h-4" />
+                        <span>{post.author}</span>
+                      </div>
                     </div>
-                    
-                    <a 
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all"
-                    >
-                      Читать далее
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
+
+                    <h2 className="text-2xl font-semibold mb-4 hover:text-accent transition-colors">
+                      <a href={`/blog/${post.slug}`}>
+                        {post.title}
+                      </a>
+                    </h2>
+
+                    <p className="text-secondary mb-6 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        {post.tags.map((tag, tagIndex) => (
+                          <span 
+                            key={tagIndex}
+                            className="px-3 py-1 bg-white rounded-full text-sm text-secondary"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <a 
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all"
+                      >
+                        Читать далее
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                    </div>
                   </div>
                 </article>
               ))}

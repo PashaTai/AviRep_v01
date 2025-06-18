@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Calendar, Clock, ArrowLeft, User, Share2, Tag } from 'lucide-react';
+import blogHeroImage from '../images/blog-hero.png';
 
 interface BlogPostProps {
   slug: string;
@@ -16,6 +17,7 @@ interface BlogPostData {
   tags: string[];
   metaTitle: string;
   metaDescription: string;
+  heroImage?: string;
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
@@ -50,7 +52,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
       author: 'Владимир Иванов',
       tags: ['Управление репутацией', 'Цифровой профиль', 'Комплаенс'],
       metaTitle: 'Почему важно контролировать информацию о вас в интернете | Avi Reputation',
-      metaDescription: 'Узнайте, как цифровой профиль влияет на бизнес и личные возможности. Советы по управлению репутацией в интернете от экспертов Avi Reputation.'
+      metaDescription: 'Узнайте, как цифровой профиль влияет на бизнес и личные возможности. Советы по управлению репутацией в интернете от экспертов Avi Reputation.',
+      heroImage: blogHeroImage
     }
   };
 
@@ -89,6 +92,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
         "@type": "Article",
         "headline": post.title,
         "description": post.metaDescription,
+        "image": post.heroImage ? `https://www.avireputation.ru${post.heroImage}` : undefined,
         "author": {
           "@type": "Person",
           "name": post.author
@@ -191,6 +195,21 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             </li>
           </ol>
         </nav>
+
+        {/* Hero Image */}
+        {post.heroImage && (
+          <div className="mb-12 -mx-6 md:mx-0">
+            <div className="relative w-full h-64 md:h-96 lg:h-[500px] overflow-hidden md:rounded-2xl">
+              <img
+                src={post.heroImage}
+                alt={post.title}
+                className="w-full h-full object-cover object-center"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+          </div>
+        )}
 
         {/* Article Header */}
         <header className="mb-12">
