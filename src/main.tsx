@@ -2,7 +2,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Router from './components/Router';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import './index.css';
 
@@ -16,7 +15,6 @@ createRoot(document.getElementById('root')!).render(
       <main>
         <Router path={currentPath} />
       </main>
-      <Footer />
       <BackToTop />
     </div>
   </StrictMode>
