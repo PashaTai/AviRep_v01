@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Calendar, Clock, ArrowLeft, User, Share2, Tag } from 'lucide-react';
 import blogHeroImage from '../images/blog-hero.png';
 import digitalReputationImage from '../images/digital-reputation-team.png';
-import dentistHeroImage from '../images/dentist-hero.png';
 
 interface BlogPostProps {
   slug: string;
@@ -124,7 +123,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
       tags: ['Кейс', 'Стоматология', 'Управление репутацией', 'Лиды', 'Медицинские клиники'],
       metaTitle: 'Управление репутацией в интернете: как увеличить лиды стоматологии с 40 до 120 заявок | AVIREPUTATION',
       metaDescription: 'Управление репутацией компании в интернете для медицинских клиник. Реальный кейс: увеличение потока пациентов на 200% через работу с отзывами и рейтингами. Аудит репутации бизнеса от AVIREPUTATION.',
-      heroImage: dentistHeroImage
+      heroImage: 'https://images.pexels.com/photos/6812418/pexels-photo-6812418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
     }
   };
 
@@ -163,7 +162,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
         "@type": "Article",
         "headline": post.title,
         "description": post.metaDescription,
-        "image": post.heroImage ? `https://www.avireputation.ru${post.heroImage}` : undefined,
+        "image": post.heroImage ? post.heroImage : undefined,
         "author": {
           "@type": "Person",
           "name": post.author
@@ -224,8 +223,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
           </h2>
         );
         
-        // Add image after "Как мы помогаем" section
-        if (section.includes('Как мы помогаем')) {
+        // Add image after "Как мы помогаем" section for the first blog post
+        if (section.includes('Как мы помогаем') && slug === 'pochemu-vazhno-kontrolirovat-informatsiyu-o-vas-v-internete') {
           formattedSections.push(
             <div key={`image-${index}`} className="my-12 -mx-6 md:mx-0">
               <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden md:rounded-2xl">
