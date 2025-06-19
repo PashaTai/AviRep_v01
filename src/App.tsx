@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection';
 import AdvantagesSection from './components/AdvantagesSection';
 import PriceListSection from './components/PriceListSection';
 import SeoPackagesSection from './components/SeoPackagesSection';
+import SermReputationSection from './components/SermReputationSection';
 import InternationalSection from './components/InternationalSection';
 import ProcessSection from './components/ProcessSection';
 import GuaranteesSection from './components/GuaranteesSection';
@@ -25,6 +26,7 @@ function App() {
         <AdvantagesSection />
         <PriceListSection />
         <SeoPackagesSection />
+        <SermReputationSection />
         <InternationalSection />
         <ProcessSection />
         <GuaranteesSection />
