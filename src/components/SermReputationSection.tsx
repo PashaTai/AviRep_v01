@@ -41,13 +41,13 @@ const SermReputationSection: React.FC = () => {
           <div className="relative">
             <Quote className="w-16 h-16 text-accent mx-auto mb-8 opacity-20" />
             <blockquote 
-              className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-primary transition-all duration-500"
+              className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-primary italic transition-all duration-500"
               style={{
                 opacity: isTransitioning ? 0 : 1,
                 transform: isTransitioning ? 'translateY(20px)' : 'translateY(0)'
               }}
             >
-              "{quotes[quoteIndex]}"
+              {quotes[quoteIndex]}
             </blockquote>
           </div>
         </div>
@@ -61,18 +61,6 @@ const SermReputationSection: React.FC = () => {
           >
             Обсудить проект
           </button>
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="mt-16 flex justify-center items-center gap-4">
-          {quotes.map((_, index) => (
-            <div
-              key={index}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === quoteIndex ? 'bg-accent scale-125' : 'bg-gray-300'
-              }`}
-            />
-          ))}
         </div>
       </div>
     </section>
