@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Calendar, Clock, ArrowLeft, User, Share2, Tag } from 'lucide-react';
 import blogHeroImage from '../images/blog-hero.png';
 import digitalReputationImage from '../images/digital-reputation-team.png';
+import dentistHeroImage from '../images/smiling_dentist_in_medicine_dentist_cabinet_reading_positive_reviews_on_tablet_jsh19qkpp59rf7sim8li_0.png';
 
 interface BlogPostProps {
   slug: string;
@@ -123,7 +124,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
       tags: ['Кейс', 'Стоматология', 'Управление репутацией', 'Лиды', 'Медицинские клиники'],
       metaTitle: 'Управление репутацией в интернете: как увеличить лиды стоматологии с 40 до 120 заявок | AVIREPUTATION',
       metaDescription: 'Управление репутацией компании в интернете для медицинских клиник. Реальный кейс: увеличение потока пациентов на 200% через работу с отзывами и рейтингами. Аудит репутации бизнеса от AVIREPUTATION.',
-      heroImage: 'https://images.pexels.com/photos/6812418/pexels-photo-6812418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+      heroImage: dentistHeroImage
     }
   };
 
