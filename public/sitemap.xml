@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://www.avireputation.ru/blog</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -51,6 +51,12 @@
   <url>
     <loc>https://www.avireputation.ru/blog/upravlenie-reputaciej-stomatologii-kejs</loc>
     <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.avireputation.ru/blog/upravlenie-reputaciej-smolensk-studiya-manikyura</loc>
+    <lastmod>2025-06-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
