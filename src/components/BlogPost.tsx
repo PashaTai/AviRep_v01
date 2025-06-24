@@ -186,31 +186,31 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
   const post = blogPosts[slug];
 
   useEffect(() => {
-  if (post) {
-    // Update page title and meta description
-    document.title = post.metaTitle;
-    
-    // Update meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', post.metaDescription);
-    } else {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', post.metaDescription);
-      document.head.appendChild(metaDescription);
-    }
+    if (post) {
+      // Update page title and meta description
+      document.title = post.metaTitle;
+      
+      // Update meta description
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', post.metaDescription);
+      } else {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        metaDescription.setAttribute('content', post.metaDescription);
+        document.head.appendChild(metaDescription);
+      }
 
-    // Add canonical URL
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink) {
-      canonicalLink.setAttribute('href', `https://www.avireputation.ru/blog/${post.slug}`);
-    } else {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      canonicalLink.setAttribute('href', `https://www.avireputation.ru/blog/${post.slug}`);
-      document.head.appendChild(canonicalLink);
-    }
+      // Add canonical URL
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) {
+        canonicalLink.setAttribute('href', `https://www.avireputation.ru/blog/${post.slug}`);
+      } else {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        canonicalLink.setAttribute('href', `https://www.avireputation.ru/blog/${post.slug}`);
+        document.head.appendChild(canonicalLink);
+      }
 
       // Add structured data for article
       const structuredData = {
@@ -298,6 +298,41 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             </div>
           );
         }
+      } else {
+        // Handle regular paragraphs and lists
+        const lines = section.split('\n');
+        const paragraphElements: JSX.Element[] = [];
+        
+        lines.forEach((line, lineIndex) => {
+          if (line.startsWith('– ') || line.startsWith('- ')) {
+            paragraphElements.push(
+              <li key={lineIndex} className="mb-2">
+                {line.replace(/^[–-] /, '')}
+              </li>
+            );
+          } else if (line.trim()) {
+            paragraphElements.push(
+              <p key={lineIndex} className="text-lg leading-relaxed mb-6">
+                {line}
+              </p>
+            );
+          }
+        });
+        
+        if (paragraphElements.some(el => el.type === 'li')) {
+          formattedSections.push(
+            <ul key={index} className="list-disc list-inside mb-6 space-y-2">
+              {paragraphElements.filter(el => el.type === 'li')}
+            </ul>
+          );
+        } else {
+          formattedSections.push(...paragraphElements);
+        }
+      }
+    });
+    
+    return formattedSections;
+  };
 
   const navigateToHome = () => {
     window.location.href = '/#contact';
