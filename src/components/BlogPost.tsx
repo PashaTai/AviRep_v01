@@ -298,37 +298,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             </div>
           );
         }
-        
-        // Add image after "Системная работа с репутацией в Смоленске" section for the Smolensk post
-        if (section.includes('Системная работа с репутацией в Смоленске') && slug === 'upravlenie-reputaciej-smolensk-studiya-manikyura') {
-          formattedSections.push(
-            <div key={`image-${index}`} className="my-12 -mx-6 md:mx-0">
-              <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden md:rounded-2xl">
-                <img
-                  src={reputationImage}
-                  alt="Управление репутацией в Смоленске - локальный бизнес"
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              </div>
-              <p className="text-center text-secondary mt-4 italic text-lg">
-                Управление репутацией в Смоленске — ключ к успеху локального бизнеса
-              </p>
-            </div>
-          );
-        }
-      } else {
-        formattedSections.push(
-          <p key={index} className="text-lg leading-relaxed mb-6">
-            {section}
-          </p>
-        );
-      }
-    });
-    
-    return formattedSections;
-  };
 
   const navigateToHome = () => {
     window.location.href = '/#contact';
